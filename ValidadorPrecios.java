@@ -5,7 +5,7 @@ import java.net.http.HttpResponse;
 
 public class ValidadorPrecios {
     public static double obtenerPreciosEnVivo(String parCripto) {
-        String url = "https://binance.com" + parCripto;
+        String url = "https://api.binance.com/api/v1/ticker/price?symbol=" + parCripto;
         try {
             // 1. Crear el cliente HTTP y la solicitud
             HttpClient cliente = HttpClient.newHttpClient();
@@ -39,8 +39,8 @@ public class ValidadorPrecios {
         System.out.println("Consultando precios en tiempo real...");
 
         // Prueba con Bitcoin y Ethereum
-        double precioBTC = obtenerPreciosEnVivo("BTCUSDT");
-        double precioETH = obtenerPreciosEnVivo("ETHUSDT");
+        double precioBTC = obtenerPreciosEnVivo("BTCUSD");
+        double precioETH = obtenerPreciosEnVivo("ETHUSD");
 
         System.out.printf("Precio actual de BTC: $%.2f USD\n", precioBTC);
         System.out.printf("Precio actual de ETH: $%.2f USD\n", precioETH);
